@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TimeRecord } from '..'
+import { Button, Box, Text } from 'grommet'
 /**
  * Describe your component
  */
@@ -14,19 +15,21 @@ class TimeRecords extends Component {
   }
 
   setNumberHoursForRecord = index => ({ numberHours }) => {
-    console.log('set number hours for record triggered')
-    console.log('number hours ', numberHours)
-    console.log('index ', index)
-
     const { records } = this.state
     records[index] = numberHours
 
     this.setState({ records })
   }
 
+  addTimeCard = () => {
+    const { records } = this.state
+    records.push(0)
+    this.setState({ records })
+  }
+
   render() {
     const { records } = this.state
-    const { setNumberHoursForRecord } = this
+    const { setNumberHoursForRecord, addTimeCard } = this
 
     const recordElements = records.map((numberHours, index) => (
       <TimeRecord
@@ -36,7 +39,23 @@ class TimeRecords extends Component {
       />
     ))
 
-    return <div>{recordElements}</div>
+    return (
+      <Box direction="column">
+        {recordElements}
+        <Button onClick={addTimeCard}>
+          <Box
+            width="medium"
+            height="xxsmall"
+            background="brand"
+            align="center"
+            justify="center"
+            margin="small"
+          >
+            <Text size="xxlarge">+</Text>
+          </Box>
+        </Button>
+      </Box>
+    )
   }
 }
 

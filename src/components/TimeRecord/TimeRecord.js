@@ -36,10 +36,6 @@ function TimeRecord({ onNumberHoursChange, numberHours }) {
   }, [startTime, endTime])
 
   useEffect(() => {
-    console.log(
-      'use effect for number hours worked triggered',
-      onNumberHoursChange,
-    )
     onNumberHoursChange({ numberHours: hoursWorked })
   }, [hoursWorked])
 
