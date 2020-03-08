@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
  * This
  */
 function TimeRecord({ onNumberHoursChange, numberHours }) {
-  const [startTime, setStartTime] = useState(null)
-  const [endTime, setEndTime] = useState(null)
+  const [startTime, setStartTime] = useState('')
+  const [endTime, setEndTime] = useState('')
   const [hoursWorked, setHoursWorked] = useState(0)
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function TimeRecord({ onNumberHoursChange, numberHours }) {
       pad="small"
       border={{ size: 'small', color: 'brand' }}
       width="medium"
-      margin="small"
+      margin={{ top: 'xxsmall', bottom: 'xxsmall' }}
     >
       <Box direction="column" width="small">
         <label htmlFor="start">Start</label>
@@ -60,7 +60,7 @@ function TimeRecord({ onNumberHoursChange, numberHours }) {
             if (e.target) {
               setStartTime(e.target.value)
             } else {
-              setStartTime(null)
+              setStartTime('')
               resetWorkedHours()
             }
           }}
@@ -84,7 +84,7 @@ function TimeRecord({ onNumberHoursChange, numberHours }) {
       </Box>
       <Box direction="column" width="small">
         <Box>
-          <Text>Number Hours</Text>
+          <Text>Hours</Text>
           <Box>{numberHours}</Box>
         </Box>
       </Box>

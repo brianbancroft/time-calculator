@@ -1,12 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Header } from 'grommet'
 
 /**
  * The header for Null Islanders
  */
 function SiteHeader() {
-  return <Header background="brand">Time Calculator</Header>
+  return (
+    <Header background="brand" gridArea="header">
+      Time Calculator
+    </Header>
+  )
 }
 
 SiteHeader.propTypes = {}

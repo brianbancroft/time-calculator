@@ -64,7 +64,7 @@ const grommetTheme = {
         dark: 'accent-1',
         light: 'brand',
       },
-      focus: '#6FFFB0',
+      focus: 'accent-4',
       placeholder: '#AAAAAA',
       selected: 'brand',
       text: {

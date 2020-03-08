@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { TimeRecord } from '..'
 import { Button, Box, Text } from 'grommet'
+import { TimeRecord } from '..'
 /**
  * Describe your component
  */
@@ -40,7 +39,7 @@ class TimeRecords extends Component {
     ))
 
     return (
-      <Box direction="column">
+      <Box direction="column" align="center" pad={{ bottom: '40px' }}>
         {recordElements}
         <Button onClick={addTimeCard}>
           <Box
@@ -49,7 +48,6 @@ class TimeRecords extends Component {
             background="brand"
             align="center"
             justify="center"
-            margin="small"
           >
             <Text size="xxlarge">+</Text>
           </Box>
