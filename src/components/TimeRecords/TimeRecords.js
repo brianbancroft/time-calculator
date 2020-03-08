@@ -28,6 +28,17 @@ class TimeRecords extends Component {
     this.setState({ records })
   }
 
+  removeElement = index => () => {
+    const { records } = this.state
+    records.splice(index, 1)
+
+    if (records.length === 0) {
+      records.push(0)
+    }
+
+    this.setState({ records })
+  }
+
   addTimeCard = () => {
     const { records } = this.state
     records.push(0)
@@ -42,13 +53,14 @@ class TimeRecords extends Component {
 
   render() {
     const { records } = this.state
-    const { setNumberHoursForRecord, addTimeCard } = this
+    const { setNumberHoursForRecord, addTimeCard, removeElement } = this
 
     const recordElements = records.map((numberHours, index) => (
       <TimeRecord
         key={index}
         numberHours={numberHours}
         onNumberHoursChange={setNumberHoursForRecord(index)}
+        removeElement={removeElement(index)}
       />
     ))
 
