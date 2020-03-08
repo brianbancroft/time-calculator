@@ -1,18 +1,17 @@
 import React from 'react'
 import { Main } from 'grommet'
-import { SiteHeader, SiteFooter, TimeRecord } from '..'
 import { detect } from 'detect-browser'
 
-const { name } = detect()
+import { SiteHeader, SiteFooter, TimeRecord } from '..'
 
-console.log('browser info ', detect())
+const { name } = detect()
 
 const Layout = () => {
   return (
     <>
       <SiteHeader browserName={name} />
       <Main>
-        <TimeRecord />
+        <TimeRecord browserName={name} />
       </Main>
       <SiteFooter />
     </>
