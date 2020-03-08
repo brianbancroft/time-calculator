@@ -5,10 +5,12 @@ import { Header } from 'grommet'
 /**
  * The header for Null Islanders
  */
-function SiteHeader() {
-  return <Header background="brand">SiteHeader</Header>
+function SiteHeader({ browserName }) {
+  return <Header background="brand">SiteHeader. Browser: {browserName}</Header>
 }
 
-SiteHeader.propTypes = {}
+SiteHeader.propTypes = {
+  browserName: PropTypes.string.isRequired,
+}
 
 export default SiteHeader

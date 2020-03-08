@@ -10,7 +10,15 @@ I wanted to use the power of design-systems such as Grommet, as well as other ad
 
 
 
-Create-react-app
+# TODO
+
+- [ ] Build single time record componet as text field
+- [ ] Capture start and end times on onBlur event
+- [ ] Validate accurate times
+- [ ] Provide fallback if browser is safari
+
+
+
 
 ## Component and Library Layout
 
