@@ -14,10 +14,10 @@ const colors = {
     mapPinRed: '#8e191e',
     callToAction: '#00a803',
     cardHover: '#f5f8fa',
+    brand: '#1e80b5',
   },
   darkTheme: {
     backgroundPrimary: '#3c4043',
-
   },
   sparkgeoColors: {
     sapling: '#E1CAAB',
@@ -25,8 +25,7 @@ const colors = {
     chenin: '#E0C971',
     ronchi: '#ED8F59',
     casablanca: '#F4B449',
-
-  }
+  },
 }
 
 /*
@@ -60,7 +59,7 @@ const grommetTheme = {
         dark: 'rgba(255,255,255,0.33)',
         light: 'rgba(0,0,0,0.33)',
       },
-      brand: '#7D4CDB',
+      brand: '#1e80b5',
       control: {
         dark: 'accent-1',
         light: 'brand',
