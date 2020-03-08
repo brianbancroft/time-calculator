@@ -5,7 +5,7 @@ import { Footer } from 'grommet'
  */
 function SiteFooter() {
   return (
-    <Footer background="dark-4" gridArea="footer">
+    <Footer background="dark-4" height="50px">
       SiteFooter
     </Footer>
   )

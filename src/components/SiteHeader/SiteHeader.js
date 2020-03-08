@@ -1,13 +1,16 @@
 import React from 'react'
-import { Header } from 'grommet'
+import { Header, Box, Heading, Text } from 'grommet'
 
 /**
  * The header for Null Islanders
  */
-function SiteHeader() {
+function SiteHeader({ totalHours = 4 }) {
   return (
-    <Header background="brand" gridArea="header">
-      Time Calculator
+    <Header background="brand" height="100px">
+      <Box justify="between" direction="row" fill align="center" pad="medium">
+        <Box>Time Calculator</Box>
+        <Box>Total Hours: {totalHours}</Box>
+      </Box>
     </Header>
   )
 }

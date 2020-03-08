@@ -24,6 +24,14 @@ class TimeRecords extends Component {
     const { records } = this.state
     records.push(0)
     this.setState({ records })
+
+    console.log('Element scroll', this.addElementButton.scrollTop)
+
+    this.addElementButton.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'nearest',
+    })
   }
 
   render() {
@@ -48,6 +56,9 @@ class TimeRecords extends Component {
             background="brand"
             align="center"
             justify="center"
+            ref={el => {
+              this.addElementButton = el
+            }}
           >
             <Text size="xxlarge">+</Text>
           </Box>
