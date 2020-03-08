@@ -8,3 +8,4 @@ export { default as SiteHeader } from './SiteHeader'
 export { default as SiteFooter } from './SiteFooter'
 
 export { default as TimeRecord } from './TimeRecord'
+export { default as TimeRecords } from './TimeRecords'

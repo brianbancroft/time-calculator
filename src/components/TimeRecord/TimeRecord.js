@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 /**
  * This
  */
-function TimeRecord({ onNumberHoursChange }) {
+function TimeRecord({ onNumberHoursChange, numberHours }) {
   const [startTime, setStartTime] = useState(null)
   const [endTime, setEndTime] = useState(null)
   const [hoursWorked, setHoursWorked] = useState(0)
@@ -36,7 +36,11 @@ function TimeRecord({ onNumberHoursChange }) {
   }, [startTime, endTime])
 
   useEffect(() => {
-    onNumberHoursChange({ numHours: hoursWorked })
+    console.log(
+      'use effect for number hours worked triggered',
+      onNumberHoursChange,
+    )
+    onNumberHoursChange({ numberHours: hoursWorked })
   }, [hoursWorked])
 
   const resetWorkedHours = () => {
@@ -85,7 +89,7 @@ function TimeRecord({ onNumberHoursChange }) {
       <Box direction="column" width="small">
         <Box>
           <Text>Number Hours</Text>
-          <Box>{hoursWorked}</Box>
+          <Box>{numberHours}</Box>
         </Box>
       </Box>
     </Box>
@@ -94,6 +98,7 @@ function TimeRecord({ onNumberHoursChange }) {
 
 TimeRecord.propTypes = {
   onNumberHoursChange: PropTypes.func,
+  numberHours: PropTypes.number.isRequired,
 }
 
 TimeRecord.defaultProps = {
