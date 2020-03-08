@@ -8,8 +8,27 @@ function SiteHeader({ totalHours = 4 }) {
   return (
     <Header background="brand" height="100px">
       <Box justify="between" direction="row" fill align="center" pad="medium">
-        <Box>Time Calculator</Box>
-        <Box>Total Hours: {totalHours}</Box>
+        <Box>
+          <Heading>Time Calculator</Heading>
+        </Box>
+        <Box
+          background="white"
+          pad="small"
+          direction="row"
+          align="center"
+          justify="between"
+        >
+          <Text>Total Hours:</Text>{' '}
+          <Box
+            background="accent-2"
+            style={{ borderRadius: '200px', height: '40px', width: '40px' }}
+            pad="medium"
+            justify="center"
+            align="center"
+          >
+            {totalHours}
+          </Box>
+        </Box>
       </Box>
     </Header>
   )
