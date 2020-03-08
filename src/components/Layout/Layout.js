@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box } from 'grommet'
 import styled from 'styled-components/macro'
 
@@ -17,14 +17,16 @@ const LayoutGrid = styled('div')`
 `
 
 const Layout = () => {
+  const [totalHours, setTotalHours] = useState(0)
+
   return (
     <Box height="100vh">
       <LayoutGrid>
         <div>
-          <SiteHeader />
+          <SiteHeader totalHours={totalHours} />
         </div>
         <article>
-          <TimeRecords />
+          <TimeRecords setTotalHours={setTotalHours} />
         </article>
         <div>
           <SiteFooter />

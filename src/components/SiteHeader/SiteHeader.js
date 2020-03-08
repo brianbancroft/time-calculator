@@ -1,10 +1,11 @@
 import React from 'react'
 import { Header, Box, Heading, Text } from 'grommet'
+import PropTypes from 'prop-types'
 
 /**
  * The header for Null Islanders
  */
-function SiteHeader({ totalHours = 4 }) {
+function SiteHeader({ totalHours }) {
   return (
     <Header background="brand" height="100px">
       <Box justify="between" direction="row" fill align="center" pad="medium">
@@ -34,6 +35,8 @@ function SiteHeader({ totalHours = 4 }) {
   )
 }
 
-SiteHeader.propTypes = {}
+SiteHeader.propTypes = {
+  totalHours: PropTypes.number.isRequired,
+}
 
 export default SiteHeader

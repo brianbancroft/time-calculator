@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Box, Text } from 'grommet'
+import PropTypes from 'prop-types'
+
 import { TimeRecord } from '..'
 /**
  * Describe your component
@@ -13,6 +15,12 @@ class TimeRecords extends Component {
     }
   }
 
+  componentDidUpdate() {
+    const add = (a, b) => a + b
+    const sumOfHours = this.state.records.reduce(add, 0)
+    this.props.setTotalHours(sumOfHours)
+  }
+
   setNumberHoursForRecord = index => ({ numberHours }) => {
     const { records } = this.state
     records[index] = numberHours
@@ -24,8 +32,6 @@ class TimeRecords extends Component {
     const { records } = this.state
     records.push(0)
     this.setState({ records })
-
-    console.log('Element scroll', this.addElementButton.scrollTop)
 
     this.addElementButton.scrollIntoView({
       behavior: 'smooth',
@@ -68,6 +74,8 @@ class TimeRecords extends Component {
   }
 }
 
-TimeRecords.propTypes = {}
+TimeRecords.propTypes = {
+  setTotalHours: PropTypes.func.isRequired,
+}
 
 export default TimeRecords
