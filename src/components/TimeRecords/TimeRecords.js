@@ -68,6 +68,7 @@ class TimeRecords extends Component {
     const recordElements = records.map((numberHours, index) => (
       <TimeRecord
         key={index}
+        index={index}
         numberHours={numberHours}
         onNumberHoursChange={setNumberHoursForRecord(index)}
         removeElement={removeElement(index)}
@@ -77,7 +78,7 @@ class TimeRecords extends Component {
     return (
       <Box direction="column" align="center" pad={{ bottom: '40px' }}>
         {recordElements}
-        <Button onClick={addTimeCard}>
+        <Button onClick={addTimeCard} margin={{ top: '5px' }}>
           <StyledButton
             width="medium"
             height="xxsmall"
@@ -88,7 +89,7 @@ class TimeRecords extends Component {
               this.addElementButton = el
             }}
           >
-            <Text size="xxlarge" id="hoverMark" margin={{ bottom: '5px' }}>
+            <Text size="xxlarge" margin={{ bottom: '5px' }}>
               +
             </Text>
           </StyledButton>

@@ -5,6 +5,8 @@ import styled from 'styled-components'
 
 const StyledInput = styled('input')`
   height: 22px;
+  max-width: 85px;
+  border: 1px solid #555;
 `
 
 const HoverBox = styled(Box)`
@@ -26,7 +28,12 @@ const HoverBox = styled(Box)`
 /**
  * This
  */
-function TimeRecord({ onNumberHoursChange, numberHours, removeElement }) {
+function TimeRecord({
+  onNumberHoursChange,
+  numberHours,
+  removeElement,
+  index,
+}) {
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
   const [hoursWorked, setHoursWorked] = useState(0)
@@ -73,10 +80,11 @@ function TimeRecord({ onNumberHoursChange, numberHours, removeElement }) {
     >
       <Box direction="row" pad="small">
         <Box direction="column" width="small" margin={{ right: '5px' }}>
-          <label htmlFor="start">Start</label>
+          <label htmlFor={`start-time-${index}`}>Start</label>
           <StyledInput
             type="time"
-            name="start"
+            name={`start-time-${index}`}
+            id={`start-time-${index}`}
             onChange={e => {
               if (e.target) {
                 setStartTime(e.target.value)
@@ -89,10 +97,11 @@ function TimeRecord({ onNumberHoursChange, numberHours, removeElement }) {
           />
         </Box>
         <Box direction="column" width="small" margin={{ right: '5px' }}>
-          <label htmlFor="end">End</label>
+          <label htmlFor={`end-time-${index}`}>End</label>
           <StyledInput
             type="time"
-            name="end"
+            name={`end-time-${index}`}
+            id={`end-time-${index}`}
             onChange={e => {
               if (e.target) {
                 setEndTime(e.target.value)
@@ -103,7 +112,7 @@ function TimeRecord({ onNumberHoursChange, numberHours, removeElement }) {
             }}
           />
         </Box>
-        <Box direction="column" width="small">
+        <Box direction="column" width="xsmall">
           <Box>
             <Text>Hours</Text>
             <Box
@@ -151,6 +160,7 @@ TimeRecord.propTypes = {
   onNumberHoursChange: PropTypes.func,
   removeElement: PropTypes.func,
   numberHours: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
 }
 
 TimeRecord.defaultProps = {

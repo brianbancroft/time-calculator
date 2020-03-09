@@ -5,8 +5,7 @@
 */
 
 
-@import url('https://rsms.me/inter/inter.css');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300, 400,900|Roboto:300, 400,900|IBM+Plex+Sans:200,300,400,900');
+
 html {
   /* Sets 1rem default size to 10px */
   font-size: 62.5%;
@@ -15,7 +14,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Helvetica', sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

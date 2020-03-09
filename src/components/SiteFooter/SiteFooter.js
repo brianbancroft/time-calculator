@@ -10,7 +10,7 @@ function SiteFooter() {
 
   return (
     <>
-      <Footer background="dark-3" height="50px" justify="between" pad="medium">
+      <Footer background="dark-1" height="50px" justify="between" pad="medium">
         <Box>
           <Text>2020, bancroft.io</Text>
         </Box>
