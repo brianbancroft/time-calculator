@@ -1,6 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Button, Text } from 'grommet'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const StyledInput = styled('input')`
+  height: 22px;
+`
+
+const HoverBox = styled(Box)`
+  transition: background 0.35s ease-in-out;
+
+  #hoverMark {
+    transition: color 0.35s ease-in-out;
+  }
+
+  &:hover {
+    background: #ec5f04;
+
+    #hoverMark {
+      color: #ec5f04;
+    }
+  }
+`
 
 /**
  * This
@@ -51,9 +72,9 @@ function TimeRecord({ onNumberHoursChange, numberHours, removeElement }) {
       border={{ size: 'small', color: 'brand' }}
     >
       <Box direction="row" pad="small">
-        <Box direction="column" width="small">
+        <Box direction="column" width="small" margin={{ right: '5px' }}>
           <label htmlFor="start">Start</label>
-          <input
+          <StyledInput
             type="time"
             name="start"
             onChange={e => {
@@ -67,9 +88,9 @@ function TimeRecord({ onNumberHoursChange, numberHours, removeElement }) {
             value={startTime}
           />
         </Box>
-        <Box direction="column" width="small">
+        <Box direction="column" width="small" margin={{ right: '5px' }}>
           <label htmlFor="end">End</label>
-          <input
+          <StyledInput
             type="time"
             name="end"
             onChange={e => {
@@ -85,48 +106,41 @@ function TimeRecord({ onNumberHoursChange, numberHours, removeElement }) {
         <Box direction="column" width="small">
           <Box>
             <Text>Hours</Text>
-            <Box>{numberHours}</Box>
+            <Box
+              border={{ size: 'xsmall', color: 'dark-2' }}
+              pad={{ left: '5px' }}
+            >
+              {numberHours}
+            </Box>
           </Box>
         </Box>
       </Box>
       <Button onClick={removeElement}>
-        <Box
+        <HoverBox
           width="xxsmall"
+          height="74px"
           background="status-critical"
-          direction="column"
           align="center"
+          justify="center"
         >
-          <Box>
-            <Text size="xsmall" style={{ lineHeight: '12px' }}>
-              R
+          <Box
+            style={{ borderRadius: '80px' }}
+            background="white"
+            width="30px"
+            height="30px"
+            justify="center"
+            align="center"
+          >
+            <Text
+              color="status-critical"
+              id="hoverMark"
+              weight="600"
+              size="xlarge"
+            >
+              -
             </Text>
           </Box>
-          <Box>
-            <Text size="xsmall" style={{ lineHeight: '12px' }}>
-              E
-            </Text>
-          </Box>
-          <Box>
-            <Text size="xsmall" style={{ lineHeight: '12px' }}>
-              M
-            </Text>
-          </Box>
-          <Box>
-            <Text size="xsmall" style={{ lineHeight: '12px' }}>
-              O
-            </Text>
-          </Box>
-          <Box>
-            <Text size="xsmall" style={{ lineHeight: '12px' }}>
-              V
-            </Text>
-          </Box>
-          <Box>
-            <Text size="xsmall" style={{ lineHeight: '12px' }}>
-              E
-            </Text>
-          </Box>
-        </Box>
+        </HoverBox>
       </Button>
     </Box>
   )

@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
 import { Button, Box, Text } from 'grommet'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import { TimeRecord } from '..'
+
+const StyledButton = styled(Box)`
+  transition: background 0.35s ease-in-out;
+
+  &:hover {
+    background: #31a5b5;
+  }
+`
+
 /**
  * Describe your component
  */
@@ -68,7 +78,7 @@ class TimeRecords extends Component {
       <Box direction="column" align="center" pad={{ bottom: '40px' }}>
         {recordElements}
         <Button onClick={addTimeCard}>
-          <Box
+          <StyledButton
             width="medium"
             height="xxsmall"
             background="brand"
@@ -78,8 +88,10 @@ class TimeRecords extends Component {
               this.addElementButton = el
             }}
           >
-            <Text size="xxlarge">+</Text>
-          </Box>
+            <Text size="xxlarge" id="hoverMark">
+              +
+            </Text>
+          </StyledButton>
         </Button>
       </Box>
     )
