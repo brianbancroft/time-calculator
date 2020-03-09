@@ -13,7 +13,6 @@ import { Grommet } from 'grommet'
 import { Layout } from './components'
 import { client } from './lib'
 import theme from './theme'
-import './App.css'
 
 function App() {
   return (
