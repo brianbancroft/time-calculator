@@ -143,7 +143,6 @@ function TimeRecord({
             <Text
               color="status-critical"
               id="hoverMark"
-              weight="600"
               size="xlarge"
               margin={{ bottom: '2px' }}
             >

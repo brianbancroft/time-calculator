@@ -1,5 +1,6 @@
 import React from 'react'
-import { Box, List, Button, Heading, Paragraph, Text } from 'grommet'
+import { Box, Button, Heading, Paragraph, Text } from 'grommet'
+import PropTypes from 'prop-types'
 
 function ModalContent({ closeFn }) {
   return (
@@ -57,6 +58,10 @@ function ModalContent({ closeFn }) {
       </Button>
     </Box>
   )
+}
+
+ModalContent.propTypes = {
+  closeFn: PropTypes.func.isRequired,
 }
 
 export default ModalContent
