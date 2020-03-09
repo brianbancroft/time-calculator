@@ -21,11 +21,12 @@ function SiteHeader({ totalHours }) {
         >
           <Text>Total Hours:</Text>{' '}
           <Box
-            background="accent-2"
+            background="brand"
             style={{ borderRadius: '200px', height: '40px', width: '40px' }}
             pad="medium"
             justify="center"
             align="center"
+            margin={{ left: '15px' }}
           >
             {totalHours}
           </Box>
