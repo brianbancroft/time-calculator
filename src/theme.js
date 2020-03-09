@@ -207,6 +207,7 @@ const grommetTheme = {
       size: '18px',
       height: '24px',
       maxWidth: '432px',
+      family: 'Helvetica',
     },
     hover: {
       background: {

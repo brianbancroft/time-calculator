@@ -22,7 +22,7 @@ function SiteFooter() {
           onClickOutside={() => setLayer(false)}
           onEsc={() => setLayer(false)}
         >
-          <ModalContent />
+          <ModalContent closeFn={() => setLayer(false)} />
         </Layer>
       )}
     </>
