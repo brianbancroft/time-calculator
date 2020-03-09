@@ -1,5 +1,5 @@
 var CACHE_NAME = 'pwa-task-manager'
-var urlsToCache = ['/', '/completed']
+var urlsToCache = ['https://timesheet-calculator.netlify.com/']
 
 // Install a service worker
 self.addEventListener('install', event => {
