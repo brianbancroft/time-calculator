@@ -136,6 +136,7 @@ function TimeRecord({ onNumberHoursChange, numberHours, removeElement }) {
               id="hoverMark"
               weight="600"
               size="xlarge"
+              margin={{ bottom: '2px' }}
             >
               -
             </Text>

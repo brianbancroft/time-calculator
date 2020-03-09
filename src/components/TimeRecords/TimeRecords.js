@@ -88,7 +88,7 @@ class TimeRecords extends Component {
               this.addElementButton = el
             }}
           >
-            <Text size="xxlarge" id="hoverMark">
+            <Text size="xxlarge" id="hoverMark" margin={{ bottom: '5px' }}>
               +
             </Text>
           </StyledButton>
