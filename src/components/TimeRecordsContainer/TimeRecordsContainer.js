@@ -14,26 +14,37 @@ const StyledButton = styled(Box)`
 `
 
 /**
- * Describe your component
+ * Contains and renders each time record. Saves to local storage
  */
 
 class TimeRecords extends Component {
   constructor() {
     super()
+
+    let storageRecords = localStorage.getItem('time-records')
+    storageRecords = JSON.parse(storageRecords) || [
+      { numberHours: 0, startTime: '', endTime: '' },
+    ]
+
     this.state = {
-      records: [0],
+      records: storageRecords,
     }
   }
 
   componentDidUpdate() {
-    const add = (a, b) => a + b
-    const sumOfHours = this.state.records.reduce(add, 0)
-    this.props.setTotalHours(sumOfHours)
+    const { records } = this.state
+    const { setTotalHours } = this.props
+
+    const add = (a, { numberHours }) => a + numberHours
+    const sumOfHours = records.reduce(add, 0)
+
+    setTotalHours(sumOfHours)
   }
 
-  setNumberHoursForRecord = index => ({ numberHours }) => {
+  updateRecord = index => ({ numberHours, startTime, endTime }) => {
     const { records } = this.state
-    records[index] = numberHours
+    records[index] = { numberHours, startTime, endTime }
+    localStorage.setItem('time-records', JSON.stringify(records))
 
     this.setState({ records })
   }
@@ -51,7 +62,9 @@ class TimeRecords extends Component {
 
   addTimeCard = () => {
     const { records } = this.state
-    records.push(0)
+    records.push({ startTime: '', endTime: '', numberHours: 0 })
+    localStorage.setItem('time-records', JSON.stringify(records))
+
     this.setState({ records })
 
     this.addElementButton.scrollIntoView({
@@ -63,17 +76,22 @@ class TimeRecords extends Component {
 
   render() {
     const { records } = this.state
-    const { setNumberHoursForRecord, addTimeCard, removeElement } = this
 
-    const recordElements = records.map((numberHours, index) => (
-      <TimeRecord
-        key={index}
-        index={index}
-        numberHours={numberHours}
-        onNumberHoursChange={setNumberHoursForRecord(index)}
-        removeElement={removeElement(index)}
-      />
-    ))
+    const { updateRecord, addTimeCard, removeElement } = this
+
+    const recordElements = records.map(
+      ({ numberHours, startTime, endTime }, index) => (
+        <TimeRecord
+          key={index}
+          index={index}
+          numberHours={numberHours}
+          startTime={startTime}
+          endTime={endTime}
+          onChange={updateRecord(index)}
+          removeElement={removeElement(index)}
+        />
+      ),
+    )
 
     return (
       <Box direction="column" align="center" pad={{ bottom: '40px' }}>

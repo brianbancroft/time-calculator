@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box } from 'grommet'
 import styled from 'styled-components/macro'
 
-import { SiteHeader, SiteFooter, TimeRecords } from '..'
+import { SiteHeader, SiteFooter, TimeRecordsContainer } from '..'
 
 const LayoutGrid = styled('div')`
   display: grid;
@@ -26,7 +26,7 @@ const Layout = () => {
           <SiteHeader totalHours={totalHours} />
         </div>
         <article>
-          <TimeRecords setTotalHours={setTotalHours} />
+          <TimeRecordsContainer setTotalHours={setTotalHours} />
         </article>
         <div>
           <SiteFooter />

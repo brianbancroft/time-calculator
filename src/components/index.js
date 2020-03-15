@@ -8,5 +8,6 @@ export { default as SiteHeader } from './SiteHeader'
 export { default as SiteFooter } from './SiteFooter'
 
 export { default as TimeRecord } from './TimeRecord'
-export { default as TimeRecords } from './TimeRecords'
 export { default as ModalContent } from './ModalContent'
+
+export { default as TimeRecordsContainer } from './TimeRecordsContainer'

@@ -29,23 +29,24 @@ const HoverBox = styled(Box)`
  * This
  */
 function TimeRecord({
-  onNumberHoursChange,
+  onChange: updateRecord,
   numberHours,
+  startTime,
+  endTime,
   removeElement,
   index,
 }) {
-  const [startTime, setStartTime] = useState('')
-  const [endTime, setEndTime] = useState('')
-  const [hoursWorked, setHoursWorked] = useState(0)
+  const [localStartTime, setLocalStartTime] = useState(startTime)
+  const [localEndTime, setLocalEndTime] = useState(endTime)
 
   useEffect(() => {
-    if (startTime && endTime) {
+    if (localStartTime && localEndTime) {
       const matchTime = time => time.match(/(\d\d):(\d\d)/)
 
       // eslint-disable-next-line
-      let [dontCare0, startHours, startMinutes] = matchTime(startTime)
+      let [dontCare0, startHours, startMinutes] = matchTime(localStartTime)
       // eslint-disable-next-line
-      let [dontCare1, endHours, endMinutes] = matchTime(endTime)
+      let [dontCare1, endHours, endMinutes] = matchTime(localEndTime)
 
       startHours = Number(startHours)
       startMinutes = Number(startMinutes)
@@ -56,19 +57,22 @@ function TimeRecord({
 
       const totalHours =
         endHours - startHours + (endMinutes - startMinutes) / 60
+      const totalHoursRounded = Math.round(10 * totalHours) / 10
 
-      const roundedHours = Math.round(totalHours * 10) / 10
-
-      setHoursWorked(roundedHours)
+      updateRecord({
+        startTime: localStartTime,
+        endTime: localEndTime,
+        numberHours: totalHoursRounded,
+      })
     }
-  }, [startTime, endTime])
-
-  useEffect(() => {
-    onNumberHoursChange({ numberHours: hoursWorked })
-  }, [hoursWorked])
+  }, [localStartTime, localEndTime])
 
   const resetWorkedHours = () => {
-    setHoursWorked(0)
+    updateRecord({
+      startTime: '',
+      endtime: '',
+      totalHours: 0,
+    })
   }
 
   return (
@@ -87,13 +91,13 @@ function TimeRecord({
             id={`start-time-${index}`}
             onChange={e => {
               if (e.target) {
-                setStartTime(e.target.value)
+                setLocalStartTime(e.target.value)
               } else {
-                setStartTime('')
+                setLocalStartTime('')
                 resetWorkedHours()
               }
             }}
-            value={startTime}
+            value={localStartTime}
           />
         </Box>
         <Box direction="column" width="small" margin={{ right: '5px' }}>
@@ -104,12 +108,13 @@ function TimeRecord({
             id={`end-time-${index}`}
             onChange={e => {
               if (e.target) {
-                setEndTime(e.target.value)
+                setLocalEndTime(e.target.value)
               } else {
-                setEndTime(null)
+                setLocalEndTime(null)
                 resetWorkedHours()
               }
             }}
+            value={localEndTime}
           />
         </Box>
         <Box direction="column" width="xsmall">
@@ -156,14 +161,16 @@ function TimeRecord({
 }
 
 TimeRecord.propTypes = {
-  onNumberHoursChange: PropTypes.func,
+  onChange: PropTypes.func,
+  startTime: PropTypes.string.isRequired,
+  endTime: PropTypes.string.isRequired,
   removeElement: PropTypes.func,
   numberHours: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
 }
 
 TimeRecord.defaultProps = {
-  onNumberHoursChange: () => {},
+  onChange: () => {},
   removeElement: () => {},
 }
 
